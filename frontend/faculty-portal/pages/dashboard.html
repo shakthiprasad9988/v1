@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - File Submission Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="grading.html" class="nav-item">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="students.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class='bx bx-task'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Active Assignments</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class='bx bx-time-five'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Pending Reviews</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Graded This Week</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class='bx bx-group'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>120</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="content-grid">
+                <!-- Pending Submissions -->
+                <div class="card pending-submissions">
+                    <div class="card-header">
+                        <h2>Pending Reviews</h2>
+                        <a href="submissions.html" class="view-all">View All</a>
+                    </div>
+                    <div class="submissions-list">
+                        <div class="submission-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff"
+                                    alt="Student">
+                                <div>
+                                    <h4>John Doe</h4>
+                                    <p>Assignment 3 - Data Structures</p>
+                                </div>
+                            </div>
+                            <div class="submission-meta">
+                                <span class="time">2 hours ago</span>
+                                <button class="btn-review">Review</button>
+                            </div>
+                        </div>
+
+                        <div class="submission-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=667eea&color=fff"
+                                    alt="Student">
+                                <div>
+                                    <h4>Jane Smith</h4>
+                                    <p>Project Report - Web Dev</p>
+                                </div>
+                            </div>
+                            <div class="submission-meta">
+                                <span class="time">5 hours ago</span>
+                                <button class="btn-review">Review</button>
+                            </div>
+                        </div>
+
+                        <div class="submission-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=667eea&color=fff"
+                                    alt="Student">
+                                <div>
+                                    <h4>Mike Johnson</h4>
+                                    <p>Lab Exercise 5 - Database</p>
+                                </div>
+                            </div>
+                            <div class="submission-meta">
+                                <span class="time">1 day ago</span>
+                                <button class="btn-review">Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Deadlines -->
+                <div class="card upcoming-deadlines">
+                    <div class="card-header">
+                        <h2>Upcoming Deadlines</h2>
+                        <a href="assignments.html" class="view-all">Manage</a>
+                    </div>
+                    <div class="deadlines-list">
+                        <div class="deadline-item urgent">
+                            <div class="deadline-date">
+                                <span class="day">25</span>
+                                <span class="month">Oct</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h4>Final Project Submission</h4>
+                                <p>CS 401 - Software Engineering</p>
+                                <span class="submissions-count">45/50 submitted</span>
+                            </div>
+                        </div>
+
+                        <div class="deadline-item">
+                            <div class="deadline-date">
+                                <span class="day">28</span>
+                                <span class="month">Oct</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h4>Assignment 4</h4>
+                                <p>CS 301 - Machine Learning</p>
+                                <span class="submissions-count">32/40 submitted</span>
+                            </div>
+                        </div>
+
+                        <div class="deadline-item">
+                            <div class="deadline-date">
+                                <span class="day">02</span>
+                                <span class="month">Nov</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h4>Research Paper</h4>
+                                <p>CS 501 - Computer Networks</p>
+                                <span class="submissions-count">18/30 submitted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card recent-activity">
+                <div class="card-header">
+                    <h2>Recent Activity</h2>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <i class='bx bx-check-circle activity-icon success'></i>
+                        <div class="activity-content">
+                            <p><strong>Graded</strong> Assignment 2 for <strong>Sarah Williams</strong></p>
+                            <span class="activity-time">10 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class='bx bx-upload activity-icon info'></i>
+                        <div class="activity-content">
+                            <p><strong>New submission</strong> from <strong>Tom Brown</strong></p>
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class='bx bx-task activity-icon primary'></i>
+                        <div class="activity-content">
+                            <p><strong>Created</strong> new assignment: <strong>Midterm Project</strong></p>
+                            <span class="activity-time">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="assignments.html" class="action-btn">
+                        <i class='bx bx-plus-circle'></i>
+                        <span>Create Assignment</span>
+                    </a>
+                    <a href="submissions.html" class="action-btn">
+                        <i class='bx bx-folder-open'></i>
+                        <span>Review Submissions</span>
+                    </a>
+                    <a href="grading.html" class="action-btn">
+                        <i class='bx bx-edit'></i>
+                        <span>Grade Work</span>
+                    </a>
+                    <a href="messages.html" class="action-btn">
+                        <i class='bx bx-message'></i>
+                        <span>Message Students</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/analytics.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-shield'></i>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item"><i class='bx bx-home'></i><span>Dashboard</span></a>
+            <a href="users.html" class="nav-item"><i class='bx bx-group'></i><span>Users</span></a>
+            <a href="courses.html" class="nav-item"><i class='bx bx-book'></i><span>Courses</span></a>
+            <a href="assignments.html" class="nav-item"><i class='bx bx-task'></i><span>Assignments</span></a>
+            <a href="submissions.html" class="nav-item"><i class='bx bx-folder-open'></i><span>Submissions</span></a>
+            <a href="analytics.html" class="nav-item active"><i class='bx bx-bar-chart-alt-2'></i><span>Analytics</span></a>
+            <a href="reports.html" class="nav-item"><i class='bx bx-file'></i><span>Reports</span></a>
+            <a href="system.html" class="nav-item"><i class='bx bx-cog'></i><span>System</span></a>
+            <a href="security.html" class="nav-item"><i class='bx bx-shield'></i><span>Security</span></a>
+            <a href="notifications.html" class="nav-item"><i class='bx bx-bell'></i><span>Notifications</span></a>
+            <a href="support.html" class="nav-item"><i class='bx bx-support'></i><span>Support</span></a>
+            <a href="maintenance.html" class="nav-item"><i class='bx bx-wrench'></i><span>Maintenance</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item"><i class='bx bx-cog'></i><span>Settings</span></a>
+            <a href="../../shared/pages/login.html" class="nav-item"><i class='bx bx-log-out'></i><span>Logout</span></a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+                <h1>Analytics Dashboard</h1>
+            </div>
+            <div class="topbar-right">
+                <select class="filter-select" id="timeRange" onchange="updateAnalytics()">
+                    <option value="7">Last 7 Days</option>
+                    <option value="30" selected>Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="365">Last Year</option>
+                </select>
+                <button class="notification-btn"><i class='bx bx-bell'></i><span class="badge">3</span></button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class='bx bx-trending-up'></i></div>
+                    <div class="stat-info">
+                        <h3>+23%</h3>
+                        <p>User Growth</p>
+                        <div class="stat-trend up"><i class='bx bx-trending-up'></i><span>vs last month</span></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class='bx bx-check-circle'></i></div>
+                    <div class="stat-info">
+                        <h3>94.5%</h3>
+                        <p>Completion Rate</p>
+                        <div class="stat-trend up"><i class='bx bx-trending-up'></i><span>+2.3%</span></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class='bx bx-time'></i></div>
+                    <div class="stat-info">
+                        <h3>2.4 hrs</h3>
+                        <p>Avg. Response Time</p>
+                        <div class="stat-trend down"><i class='bx bx-trending-down'></i><span>-15 min</span></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class='bx bx-star'></i></div>
+                    <div class="stat-info">
+                        <h3>4.8/5</h3>
+                        <p>Satisfaction Score</p>
+                        <div class="stat-trend up"><i class='bx bx-trending-up'></i><span>+0.2</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>User Activity</h2>
+                        <button class="btn-secondary" onclick="exportChart('user-activity')"><i class='bx bx-export'></i></button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="userActivityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Submission Trends</h2>
+                        <button class="btn-secondary" onclick="exportChart('submissions')"><i class='bx bx-export'></i></button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="submissionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Top Performing Courses</h2>
+                    <a href="courses.html" class="view-all">View All</a>
+                </div>
+                <div class="performance-list">
+                    <div class="performance-item">
+                        <div class="performance-info">
+                            <h4>CS101 - Introduction to Programming</h4>
+                            <p>156 students • 95% completion</p>
+                        </div>
+                        <div class="performance-score high">A+</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-info">
+                            <h4>CS201 - Data Structures</h4>
+                            <p>98 students • 92% completion</p>
+                        </div>
+                        <div class="performance-score high">A</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-info">
+                            <h4>MATH301 - Linear Algebra</h4>
+                            <p>72 students • 88% completion</p>
+                        </div>
+                        <div class="performance-score medium">B+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/analytics.js"></script>
+</body>
+</html>

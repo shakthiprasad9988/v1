@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading - Faculty Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/grading.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="students.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Grading</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Grading Content -->
+        <div class="grading-container">
+            <div class="grading-layout">
+                <!-- Left Panel - Submission Details -->
+                <div class="submission-panel">
+                    <div class="student-header">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                        <div class="student-info">
+                            <h2>John Doe</h2>
+                            <p>Student ID: 2021CS001</p>
+                        </div>
+                    </div>
+
+                    <div class="assignment-info">
+                        <h3>Assignment 3 - Data Structures</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class='bx bx-calendar'></i>
+                                <div>
+                                    <span class="label">Submitted</span>
+                                    <span class="value">Oct 23, 2025 - 10:30 AM</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class='bx bx-time'></i>
+                                <div>
+                                    <span class="label">Due Date</span>
+                                    <span class="value">Oct 25, 2025 - 11:59 PM</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class='bx bx-check-circle'></i>
+                                <div>
+                                    <span class="label">Status</span>
+                                    <span class="value status-on-time">On Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="submission-files">
+                        <h4>Submitted Files</h4>
+                        <div class="file-list">
+                            <div class="file-item">
+                                <i class='bx bx-file'></i>
+                                <div class="file-info">
+                                    <span class="file-name">assignment3_solution.py</span>
+                                    <span class="file-size">24 KB</span>
+                                </div>
+                                <button class="btn-icon" title="Download">
+                                    <i class='bx bx-download'></i>
+                                </button>
+                            </div>
+                            <div class="file-item">
+                                <i class='bx bx-file'></i>
+                                <div class="file-info">
+                                    <span class="file-name">test_cases.py</span>
+                                    <span class="file-size">12 KB</span>
+                                </div>
+                                <button class="btn-icon" title="Download">
+                                    <i class='bx bx-download'></i>
+                                </button>
+                            </div>
+                            <div class="file-item">
+                                <i class='bx bx-file'></i>
+                                <div class="file-info">
+                                    <span class="file-name">README.md</span>
+                                    <span class="file-size">3 KB</span>
+                                </div>
+                                <button class="btn-icon" title="Download">
+                                    <i class='bx bx-download'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="file-preview">
+                        <h4>File Preview</h4>
+                        <div class="code-preview">
+                            <pre><code># assignment3_solution.py
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, value):
+        if not self.root:
+            self.root = Node(value)
+        else:
+            self._insert_recursive(self.root, value)
+    
+    def _insert_recursive(self, node, value):
+        if value < node.value:
+            if node.left is None:
+                node.left = Node(value)
+            else:
+                self._insert_recursive(node.left, value)
+        else:
+            if node.right is None:
+                node.right = Node(value)
+            else:
+                self._insert_recursive(node.right, value)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Grading Form -->
+                <div class="grading-panel">
+                    <div class="grading-form">
+                        <h3>Grade Submission</h3>
+                        
+                        <!-- Rubric Grading -->
+                        <div class="rubric-section">
+                            <h4>Grading Rubric</h4>
+                            
+                            <div class="rubric-item">
+                                <div class="rubric-header">
+                                    <span class="rubric-name">Code Quality</span>
+                                    <span class="rubric-points">
+                                        <input type="number" class="points-input" min="0" max="20" value="18"> / 20
+                                    </span>
+                                </div>
+                                <div class="rubric-bar">
+                                    <div class="rubric-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="rubric-item">
+                                <div class="rubric-header">
+                                    <span class="rubric-name">Functionality</span>
+                                    <span class="rubric-points">
+                                        <input type="number" class="points-input" min="0" max="30" value="28"> / 30
+                                    </span>
+                                </div>
+                                <div class="rubric-bar">
+                                    <div class="rubric-fill" style="width: 93%"></div>
+                                </div>
+                            </div>
+
+                            <div class="rubric-item">
+                                <div class="rubric-header">
+                                    <span class="rubric-name">Documentation</span>
+                                    <span class="rubric-points">
+                                        <input type="number" class="points-input" min="0" max="20" value="17"> / 20
+                                    </span>
+                                </div>
+                                <div class="rubric-bar">
+                                    <div class="rubric-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="rubric-item">
+                                <div class="rubric-header">
+                                    <span class="rubric-name">Testing</span>
+                                    <span class="rubric-points">
+                                        <input type="number" class="points-input" min="0" max="15" value="14"> / 15
+                                    </span>
+                                </div>
+                                <div class="rubric-bar">
+                                    <div class="rubric-fill" style="width: 93%"></div>
+                                </div>
+                            </div>
+
+                            <div class="rubric-item">
+                                <div class="rubric-header">
+                                    <span class="rubric-name">Creativity</span>
+                                    <span class="rubric-points">
+                                        <input type="number" class="points-input" min="0" max="15" value="13"> / 15
+                                    </span>
+                                </div>
+                                <div class="rubric-bar">
+                                    <div class="rubric-fill" style="width: 87%"></div>
+                                </div>
+                            </div>
+
+                            <div class="total-score">
+                                <span>Total Score</span>
+                                <span class="score-value">90 / 100</span>
+                            </div>
+                        </div>
+
+                        <!-- Feedback -->
+                        <div class="feedback-section">
+                            <h4>Feedback</h4>
+                            <textarea id="feedbackText" rows="8" placeholder="Provide detailed feedback to the student...">Great work on implementing the binary search tree! Your code is clean and well-structured. The recursive approach is efficient and easy to understand.
+
+Areas for improvement:
+- Consider adding error handling for edge cases
+- Add more comprehensive test cases
+- Include time complexity analysis in documentation
+
+Overall, excellent submission!</textarea>
+                        </div>
+
+                        <!-- Quick Comments -->
+                        <div class="quick-comments">
+                            <h4>Quick Comments</h4>
+                            <div class="comment-chips">
+                                <button class="chip">Excellent work!</button>
+                                <button class="chip">Good effort</button>
+                                <button class="chip">Needs improvement</button>
+                                <button class="chip">Well documented</button>
+                                <button class="chip">Clean code</button>
+                                <button class="chip">Missing tests</button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="grading-actions">
+                            <button class="btn-secondary">Save Draft</button>
+                            <button class="btn-primary" id="submitGradeBtn">Submit Grade</button>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="submission-navigation">
+                        <button class="nav-btn" id="prevSubmission">
+                            <i class='bx bx-chevron-left'></i>
+                            Previous
+                        </button>
+                        <span class="nav-info">1 of 24</span>
+                        <button class="nav-btn" id="nextSubmission">
+                            Next
+                            <i class='bx bx-chevron-right'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/grading.js"></script>
+</body>
+</html>

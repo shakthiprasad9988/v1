@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/notifications.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header"><div class="logo"><i class='bx bx-shield'></i><span>Admin Portal</span></div></div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item"><i class='bx bx-home'></i><span>Dashboard</span></a>
+            <a href="users.html" class="nav-item"><i class='bx bx-group'></i><span>Users</span></a>
+            <a href="courses.html" class="nav-item"><i class='bx bx-book'></i><span>Courses</span></a>
+            <a href="assignments.html" class="nav-item"><i class='bx bx-task'></i><span>Assignments</span></a>
+            <a href="submissions.html" class="nav-item"><i class='bx bx-folder-open'></i><span>Submissions</span></a>
+            <a href="analytics.html" class="nav-item"><i class='bx bx-bar-chart-alt-2'></i><span>Analytics</span></a>
+            <a href="reports.html" class="nav-item"><i class='bx bx-file'></i><span>Reports</span></a>
+            <a href="system.html" class="nav-item"><i class='bx bx-cog'></i><span>System</span></a>
+            <a href="security.html" class="nav-item"><i class='bx bx-shield'></i><span>Security</span></a>
+            <a href="notifications.html" class="nav-item active"><i class='bx bx-bell'></i><span>Notifications</span></a>
+            <a href="support.html" class="nav-item"><i class='bx bx-support'></i><span>Support</span></a>
+            <a href="maintenance.html" class="nav-item"><i class='bx bx-wrench'></i><span>Maintenance</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item"><i class='bx bx-cog'></i><span>Settings</span></a>
+            <a href="../../shared/pages/login.html" class="nav-item"><i class='bx bx-log-out'></i><span>Logout</span></a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+                <h1>Notifications</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn-primary" onclick="sendAnnouncement()"><i class='bx bx-send'></i>Send Announcement</button>
+                <button class="notification-btn"><i class='bx bx-bell'></i><span class="badge">3</span></button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span><i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class='bx bx-send'></i></div>
+                    <div class="stat-info"><h3>1,245</h3><p>Sent Today</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class='bx bx-check'></i></div>
+                    <div class="stat-info"><h3>98.5%</h3><p>Delivery Rate</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class='bx bx-time'></i></div>
+                    <div class="stat-info"><h3>12</h3><p>Scheduled</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class='bx bx-envelope'></i></div>
+                    <div class="stat-info"><h3>856</h3><p>Email Sent</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h2>Send Notification</h2></div>
+                <form class="notification-form" onsubmit="sendNotification(event)">
+                    <div class="form-group">
+                        <label>Recipients</label>
+                        <select required>
+                            <option value="all">All Users</option>
+                            <option value="students">All Students</option>
+                            <option value="faculty">All Faculty</option>
+                            <option value="admins">All Admins</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" required placeholder="Notification subject">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" required placeholder="Notification message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Notification</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script>
+        function sendNotification(e) {
+            e.preventDefault();
+            showToast('Notification sent successfully!', 'success');
+            e.target.reset();
+        }
+        function sendAnnouncement() {
+            showToast('Opening announcement form...', 'info');
+        }
+    </script>
+</body>
+</html>

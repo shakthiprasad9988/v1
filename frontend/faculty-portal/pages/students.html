@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Faculty Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/students.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="grading.html" class="nav-item">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Students</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn-primary" id="addStudentBtn">
+                    <i class='bx bx-user-plus'></i>
+                    Add Student
+                </button>
+                <button class="btn-secondary" id="exportBtn">
+                    <i class='bx bx-download'></i>
+                    Export
+                </button>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Students Content -->
+        <div class="students-container">
+            <!-- Stats Summary -->
+            <div class="stats-summary">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class='bx bx-group'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalStudents">120</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class='bx bx-trending-up'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="activeStudents">115</h3>
+                        <p>Active Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class='bx bx-star'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="avgGrade">85.4</h3>
+                        <p>Average Grade</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class='bx bx-trophy'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="topPerformers">24</h3>
+                        <p>Top Performers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class='bx bx-list-ul'></i>
+                        All
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        <i class='bx bx-check-circle'></i>
+                        Active
+                    </button>
+                    <button class="filter-btn" data-filter="top">
+                        <i class='bx bx-star'></i>
+                        Top Performers
+                    </button>
+                    <button class="filter-btn" data-filter="struggling">
+                        <i class='bx bx-error-circle'></i>
+                        Needs Attention
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <select class="course-filter" id="courseFilter">
+                        <option value="all">All Courses</option>
+                        <option value="cs401">CS 401 - Software Engineering</option>
+                        <option value="cs301">CS 301 - Machine Learning</option>
+                        <option value="cs501">CS 501 - Computer Networks</option>
+                    </select>
+                    <select class="sort-filter" id="sortFilter">
+                        <option value="name">Sort by Name</option>
+                        <option value="grade">Sort by Grade</option>
+                        <option value="submissions">Sort by Submissions</option>
+                        <option value="recent">Recently Active</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search students..." id="searchInput">
+                </div>
+            </div>
+
+            <!-- View Toggle -->
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="grid">
+                    <i class='bx bx-grid-alt'></i>
+                    Grid
+                </button>
+                <button class="view-btn" data-view="list">
+                    <i class='bx bx-list-ul'></i>
+                    List
+                </button>
+            </div>
+
+            <!-- Students Grid View -->
+            <div class="students-grid" id="studentsGrid">
+                <!-- Student Card 1 -->
+                <div class="student-card" data-status="active" data-performance="top">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                        <span class="status-indicator active"></span>
+                    </div>
+                    <div class="card-body">
+                        <h3>John Doe</h3>
+                        <p class="student-id">ID: 2021CS001</p>
+                        <div class="student-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-file'></i>
+                                <span>12 Submissions</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-star'></i>
+                                <span>92% Average</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%"></div>
+                        </div>
+                        <span class="performance-badge top">Top Performer</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-icon" title="View Profile" data-action="view">
+                            <i class='bx bx-user'></i>
+                        </button>
+                        <button class="btn-icon" title="Send Message" data-action="message">
+                            <i class='bx bx-message'></i>
+                        </button>
+                        <button class="btn-icon" title="View Submissions" data-action="submissions">
+                            <i class='bx bx-folder'></i>
+                        </button>
+                        <button class="btn-icon" title="More Options" data-action="more">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Student Card 2 -->
+                <div class="student-card" data-status="active" data-performance="good">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=667eea&color=fff" alt="Student">
+                        <span class="status-indicator active"></span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Jane Smith</h3>
+                        <p class="student-id">ID: 2021CS002</p>
+                        <div class="student-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-file'></i>
+                                <span>11 Submissions</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-star'></i>
+                                <span>88% Average</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%"></div>
+                        </div>
+                        <span class="performance-badge good">Good Performance</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-icon" title="View Profile" data-action="view">
+                            <i class='bx bx-user'></i>
+                        </button>
+                        <button class="btn-icon" title="Send Message" data-action="message">
+                            <i class='bx bx-message'></i>
+                        </button>
+                        <button class="btn-icon" title="View Submissions" data-action="submissions">
+                            <i class='bx bx-folder'></i>
+                        </button>
+                        <button class="btn-icon" title="More Options" data-action="more">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Student Card 3 -->
+                <div class="student-card" data-status="active" data-performance="struggling">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=667eea&color=fff" alt="Student">
+                        <span class="status-indicator active"></span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Mike Johnson</h3>
+                        <p class="student-id">ID: 2021CS003</p>
+                        <div class="student-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-file'></i>
+                                <span>8 Submissions</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-star'></i>
+                                <span>68% Average</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill warning" style="width: 68%"></div>
+                        </div>
+                        <span class="performance-badge struggling">Needs Attention</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-icon" title="View Profile" data-action="view">
+                            <i class='bx bx-user'></i>
+                        </button>
+                        <button class="btn-icon" title="Send Message" data-action="message">
+                            <i class='bx bx-message'></i>
+                        </button>
+                        <button class="btn-icon" title="View Submissions" data-action="submissions">
+                            <i class='bx bx-folder'></i>
+                        </button>
+                        <button class="btn-icon" title="More Options" data-action="more">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Student Card 4 -->
+                <div class="student-card" data-status="active" data-performance="top">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=667eea&color=fff" alt="Student">
+                        <span class="status-indicator active"></span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Sarah Williams</h3>
+                        <p class="student-id">ID: 2021CS004</p>
+                        <div class="student-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-file'></i>
+                                <span>12 Submissions</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-star'></i>
+                                <span>95% Average</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                        <span class="performance-badge top">Top Performer</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-icon" title="View Profile" data-action="view">
+                            <i class='bx bx-user'></i>
+                        </button>
+                        <button class="btn-icon" title="Send Message" data-action="message">
+                            <i class='bx bx-message'></i>
+                        </button>
+                        <button class="btn-icon" title="View Submissions" data-action="submissions">
+                            <i class='bx bx-folder'></i>
+                        </button>
+                        <button class="btn-icon" title="More Options" data-action="more">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students List View (Hidden by default) -->
+            <div class="students-list" id="studentsList" style="display: none;">
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>ID</th>
+                            <th>Course</th>
+                            <th>Submissions</th>
+                            <th>Average Grade</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="student-row" data-status="active">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                                    <span>John Doe</span>
+                                </div>
+                            </td>
+                            <td>2021CS001</td>
+                            <td>CS 401</td>
+                            <td>12/12</td>
+                            <td><span class="grade-badge high">92%</span></td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon" title="View Profile" data-action="view">
+                                        <i class='bx bx-user'></i>
+                                    </button>
+                                    <button class="btn-icon" title="Send Message" data-action="message">
+                                        <i class='bx bx-message'></i>
+                                    </button>
+                                    <button class="btn-icon" title="View Submissions" data-action="submissions">
+                                        <i class='bx bx-folder'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/students.js"></script>
+</body>
+</html>

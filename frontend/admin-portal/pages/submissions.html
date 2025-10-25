@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/submissions.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-shield'></i>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Users</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class='bx bx-book'></i>
+                <span>Courses</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item active">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class='bx bx-file'></i>
+                <span>Reports</span>
+            </a>
+            <a href="system.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>System</span>
+            </a>
+            <a href="security.html" class="nav-item">
+                <i class='bx bx-shield'></i>
+                <span>Security</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class='bx bx-bell'></i>
+                <span>Notifications</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class='bx bx-support'></i>
+                <span>Support</span>
+            </a>
+            <a href="maintenance.html" class="nav-item">
+                <i class='bx bx-wrench'></i>
+                <span>Maintenance</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Submissions Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search submissions..." id="searchSubmissions">
+                </div>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Submissions Content -->
+        <div class="dashboard-container">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class='bx bx-folder-open'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>2,847</h3>
+                        <p>Total Submissions</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>1,923</h3>
+                        <p>Graded</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class='bx bx-time'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>924</h3>
+                        <p>Pending Review</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class='bx bx-error'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Today</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-left">
+                    <button class="btn-secondary" onclick="exportSubmissions()">
+                        <i class='bx bx-export'></i>
+                        Export
+                    </button>
+                    <button class="btn-secondary" onclick="downloadAll()">
+                        <i class='bx bx-download'></i>
+                        Download All
+                    </button>
+                    <button class="btn-danger" onclick="bulkDeleteSubmissions()">
+                        <i class='bx bx-trash'></i>
+                        Bulk Delete
+                    </button>
+                </div>
+                <div class="actions-right">
+                    <select class="filter-select" id="courseFilter" onchange="filterByCourse()">
+                        <option value="all">All Courses</option>
+                        <option value="cs101">CS101</option>
+                        <option value="cs201">CS201</option>
+                        <option value="math301">MATH301</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                        <option value="all">All Status</option>
+                        <option value="graded">Graded</option>
+                        <option value="pending">Pending</option>
+                        <option value="late">Late</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submissions Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+                                <th>Student</th>
+                                <th>Assignment</th>
+                                <th>Course</th>
+                                <th>Submitted</th>
+                                <th>File</th>
+                                <th>Grade</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submissionsTableBody">
+                            <tr>
+                                <td><input type="checkbox" class="submission-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                                        <span>John Doe</span>
+                                    </div>
+                                </td>
+                                <td>Python Basics - Variables</td>
+                                <td><span class="course-badge cs">CS101</span></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 28, 2025</span>
+                                        <span class="time-ago">2 hours ago</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-cell">
+                                        <i class='bx bx-file'></i>
+                                        <span>assignment1.py</span>
+                                    </div>
+                                </td>
+                                <td><span class="grade-badge high">95/100</span></td>
+                                <td><span class="status-badge graded">Graded</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewSubmission('sub-001')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="downloadSubmission('sub-001')" title="Download">
+                                            <i class='bx bx-download'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteSubmission('sub-001')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="submission-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=56ab2f&color=fff" alt="Student">
+                                        <span>Sarah Williams</span>
+                                    </div>
+                                </td>
+                                <td>Binary Search Tree</td>
+                                <td><span class="course-badge cs">CS201</span></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 27, 2025</span>
+                                        <span class="time-ago">1 day ago</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-cell">
+                                        <i class='bx bx-file'></i>
+                                        <span>bst_implementation.cpp</span>
+                                    </div>
+                                </td>
+                                <td><span class="grade-badge">-</span></td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewSubmission('sub-002')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="downloadSubmission('sub-002')" title="Download">
+                                            <i class='bx bx-download'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteSubmission('sub-002')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="submission-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=f2994a&color=fff" alt="Student">
+                                        <span>Mike Johnson</span>
+                                    </div>
+                                </td>
+                                <td>Matrix Operations</td>
+                                <td><span class="course-badge math">MATH301</span></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 26, 2025</span>
+                                        <span class="time-ago late">2 days late</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-cell">
+                                        <i class='bx bx-file'></i>
+                                        <span>matrix_solutions.pdf</span>
+                                    </div>
+                                </td>
+                                <td><span class="grade-badge medium">72/100</span></td>
+                                <td><span class="status-badge late">Late</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewSubmission('sub-003')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="downloadSubmission('sub-003')" title="Download">
+                                            <i class='bx bx-download'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteSubmission('sub-003')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="submission-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Emily+Chen&background=764ba2&color=fff" alt="Student">
+                                        <span>Emily Chen</span>
+                                    </div>
+                                </td>
+                                <td>Web Development Project</td>
+                                <td><span class="course-badge cs">CS101</span></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 28, 2025</span>
+                                        <span class="time-ago">5 hours ago</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-cell">
+                                        <i class='bx bx-file'></i>
+                                        <span>website_project.zip</span>
+                                    </div>
+                                </td>
+                                <td><span class="grade-badge high">88/100</span></td>
+                                <td><span class="status-badge graded">Graded</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewSubmission('sub-004')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="downloadSubmission('sub-004')" title="Download">
+                                            <i class='bx bx-download'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteSubmission('sub-004')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="submission-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Alex+Brown&background=a8c0ff&color=fff" alt="Student">
+                                        <span>Alex Brown</span>
+                                    </div>
+                                </td>
+                                <td>Python Basics - Variables</td>
+                                <td><span class="course-badge cs">CS101</span></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 28, 2025</span>
+                                        <span class="time-ago">30 minutes ago</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-cell">
+                                        <i class='bx bx-file'></i>
+                                        <span>variables_assignment.py</span>
+                                    </div>
+                                </td>
+                                <td><span class="grade-badge">-</span></td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewSubmission('sub-005')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="downloadSubmission('sub-005')" title="Download">
+                                            <i class='bx bx-download'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteSubmission('sub-005')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn-secondary" onclick="previousPage()">
+                        <i class='bx bx-chevron-left'></i>
+                        Previous
+                    </button>
+                    <div class="page-numbers">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span>...</span>
+                        <button class="page-btn">28</button>
+                    </div>
+                    <button class="btn-secondary" onclick="nextPage()">
+                        Next
+                        <i class='bx bx-chevron-right'></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bulk Actions Bar -->
+            <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                <span id="selectedCount">0 submissions selected</span>
+                <div class="bulk-buttons">
+                    <button class="btn-secondary" onclick="bulkDownload()">
+                        <i class='bx bx-download'></i>
+                        Download
+                    </button>
+                    <button class="btn-danger" onclick="bulkDelete()">
+                        <i class='bx bx-trash'></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/submissions.js"></script>
+</body>
+</html>

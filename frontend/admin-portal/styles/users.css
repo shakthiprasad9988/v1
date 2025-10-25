@@ -1,0 +1,435 @@
+/* Users Page Specific Styles */
+
+/* Actions Bar */
+.actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.actions-left {
+    display: flex;
+    gap: 10px;
+}
+
+.actions-right {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #f5576c;
+}
+
+/* Table Container */
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background: rgba(245, 87, 108, 0.05);
+}
+
+.data-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(245, 87, 108, 0.1);
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    color: #666;
+}
+
+.data-table tbody tr {
+    transition: background 0.3s;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(245, 87, 108, 0.02);
+}
+
+/* User Cell */
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-cell img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-cell span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Role Badges */
+.role-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.role-badge.student {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+.role-badge.faculty {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.role-badge.admin {
+    background: rgba(245, 87, 108, 0.1);
+    color: #f5576c;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.active {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.status-badge.inactive {
+    background: rgba(153, 153, 153, 0.1);
+    color: #999;
+}
+
+.status-badge.suspended {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: rgba(245, 87, 108, 0.1);
+    color: #f5576c;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.btn-icon:hover {
+    background: rgba(245, 87, 108, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-icon.danger {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}
+
+.btn-icon.danger:hover {
+    background: rgba(255, 71, 87, 0.2);
+}
+
+.btn-icon i {
+    font-size: 18px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.page-btn:hover {
+    background: rgba(245, 87, 108, 0.1);
+    border-color: #f5576c;
+    color: #f5576c;
+}
+
+.page-btn.active {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    border-color: transparent;
+}
+
+/* Bulk Actions Bar */
+.bulk-actions-bar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.bulk-actions-bar span {
+    font-weight: 600;
+}
+
+.bulk-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.bulk-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bulk-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.bulk-buttons .btn-danger {
+    background: rgba(255, 71, 87, 0.9);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-header h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.close-modal {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: rgba(245, 87, 108, 0.1);
+    color: #f5576c;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.close-modal:hover {
+    background: rgba(245, 87, 108, 0.2);
+}
+
+.close-modal i {
+    font-size: 24px;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* Form Styles */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #f5576c;
+    box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .actions-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .actions-left,
+    .actions-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    .data-table {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: 767px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bulk-actions-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+        border-radius: 15px;
+    }
+
+    .bulk-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .bulk-buttons button {
+        width: 100%;
+    }
+}

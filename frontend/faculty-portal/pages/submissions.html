@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions - Faculty Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/submissions.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="grading.html" class="nav-item">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="students.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Submissions</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn-primary" id="exportBtn">
+                    <i class='bx bx-download'></i>
+                    Export Data
+                </button>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Submissions Content -->
+        <div class="submissions-container">
+            <!-- Stats Summary -->
+            <div class="stats-summary">
+                <div class="stat-item">
+                    <i class='bx bx-file'></i>
+                    <div>
+                        <span class="stat-number" id="totalSubmissions">5</span>
+                        <span class="stat-label">Total Submissions</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-time-five'></i>
+                    <div>
+                        <span class="stat-number" id="pendingCount">2</span>
+                        <span class="stat-label">Pending Review</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-check-circle'></i>
+                    <div>
+                        <span class="stat-number" id="gradedCount">2</span>
+                        <span class="stat-label">Graded</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-error-circle'></i>
+                    <div>
+                        <span class="stat-number" id="lateCount">1</span>
+                        <span class="stat-label">Late Submissions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class='bx bx-list-ul'></i>
+                        All
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <i class='bx bx-time'></i>
+                        Pending
+                    </button>
+                    <button class="filter-btn" data-filter="graded">
+                        <i class='bx bx-check'></i>
+                        Graded
+                    </button>
+                    <button class="filter-btn" data-filter="late">
+                        <i class='bx bx-error'></i>
+                        Late
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <select class="assignment-filter" id="assignmentFilter">
+                        <option value="all">All Assignments</option>
+                        <option value="assignment3">Assignment 3 - Data Structures</option>
+                        <option value="project">Final Project</option>
+                        <option value="assignment4">Assignment 4 - ML</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search by student name..." id="searchInput">
+                </div>
+            </div>
+
+            <!-- Submissions Table -->
+            <div class="submissions-table-container">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Assignment</th>
+                            <th>Submitted</th>
+                            <th>Status</th>
+                            <th>Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsTableBody">
+                        <tr class="submission-row pending" data-student="John Doe" data-assignment="Assignment 3">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                                    <div>
+                                        <div class="student-name">John Doe</div>
+                                        <div class="student-id">2021CS001</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="assignment-name">Assignment 3 - Data Structures</td>
+                            <td class="submission-time">Oct 23, 2025 10:30 AM</td>
+                            <td><span class="status-badge pending">Pending Review</span></td>
+                            <td class="grade-cell">-</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action" title="Grade" data-action="grade">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="btn-action" title="View" data-action="view">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="btn-action" title="Download" data-action="download">
+                                        <i class='bx bx-download'></i>
+                                    </button>
+                                    <button class="btn-action" title="Send Reminder" data-action="reminder">
+                                        <i class='bx bx-bell'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="submission-row graded" data-student="Jane Smith" data-assignment="Assignment 3">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=667eea&color=fff" alt="Student">
+                                    <div>
+                                        <div class="student-name">Jane Smith</div>
+                                        <div class="student-id">2021CS002</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="assignment-name">Assignment 3 - Data Structures</td>
+                            <td class="submission-time">Oct 22, 2025 3:45 PM</td>
+                            <td><span class="status-badge graded">Graded</span></td>
+                            <td class="grade-cell"><span class="grade-display">92/100</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action" title="Edit Grade" data-action="grade">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="btn-action" title="View" data-action="view">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="btn-action" title="Download" data-action="download">
+                                        <i class='bx bx-download'></i>
+                                    </button>
+                                    <button class="btn-action" title="View Feedback" data-action="feedback">
+                                        <i class='bx bx-message-square-detail'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="submission-row late" data-student="Mike Johnson" data-assignment="Assignment 3">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=667eea&color=fff" alt="Student">
+                                    <div>
+                                        <div class="student-name">Mike Johnson</div>
+                                        <div class="student-id">2021CS003</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="assignment-name">Assignment 3 - Data Structures</td>
+                            <td class="submission-time">
+                                Oct 26, 2025 2:15 PM
+                                <span class="late-indicator">
+                                    <i class='bx bx-error-circle'></i>
+                                    1 day late
+                                </span>
+                            </td>
+                            <td><span class="status-badge late">Late Submission</span></td>
+                            <td class="grade-cell">-</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action" title="Grade" data-action="grade">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="btn-action" title="View" data-action="view">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="btn-action" title="Download" data-action="download">
+                                        <i class='bx bx-download'></i>
+                                    </button>
+                                    <button class="btn-action" title="Apply Penalty" data-action="penalty">
+                                        <i class='bx bx-minus-circle'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="submission-row graded" data-student="Sarah Williams" data-assignment="Assignment 3">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=667eea&color=fff" alt="Student">
+                                    <div>
+                                        <div class="student-name">Sarah Williams</div>
+                                        <div class="student-id">2021CS004</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="assignment-name">Assignment 3 - Data Structures</td>
+                            <td class="submission-time">Oct 21, 2025 8:20 PM</td>
+                            <td><span class="status-badge graded">Graded</span></td>
+                            <td class="grade-cell"><span class="grade-display">88/100</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action" title="Edit Grade" data-action="grade">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="btn-action" title="View" data-action="view">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="btn-action" title="Download" data-action="download">
+                                        <i class='bx bx-download'></i>
+                                    </button>
+                                    <button class="btn-action" title="View Feedback" data-action="feedback">
+                                        <i class='bx bx-message-square-detail'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="submission-row pending" data-student="Tom Brown" data-assignment="Assignment 3">
+                            <td>
+                                <div class="student-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Tom+Brown&background=667eea&color=fff" alt="Student">
+                                    <div>
+                                        <div class="student-name">Tom Brown</div>
+                                        <div class="student-id">2021CS005</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="assignment-name">Assignment 3 - Data Structures</td>
+                            <td class="submission-time">Oct 24, 2025 4:15 PM</td>
+                            <td><span class="status-badge pending">Pending Review</span></td>
+                            <td class="grade-cell">-</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action" title="Grade" data-action="grade">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="btn-action" title="View" data-action="view">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="btn-action" title="Download" data-action="download">
+                                        <i class='bx bx-download'></i>
+                                    </button>
+                                    <button class="btn-action" title="Send Reminder" data-action="reminder">
+                                        <i class='bx bx-bell'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled>
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/submissions.js"></script>
+</body>
+</html>

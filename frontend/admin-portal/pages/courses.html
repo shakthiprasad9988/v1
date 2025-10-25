@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/courses.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-shield'></i>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Users</span>
+            </a>
+            <a href="courses.html" class="nav-item active">
+                <i class='bx bx-book'></i>
+                <span>Courses</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class='bx bx-file'></i>
+                <span>Reports</span>
+            </a>
+            <a href="system.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>System</span>
+            </a>
+            <a href="security.html" class="nav-item">
+                <i class='bx bx-shield'></i>
+                <span>Security</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class='bx bx-bell'></i>
+                <span>Notifications</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class='bx bx-support'></i>
+                <span>Support</span>
+            </a>
+            <a href="maintenance.html" class="nav-item">
+                <i class='bx bx-wrench'></i>
+                <span>Maintenance</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Courses Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search courses..." id="searchCourses">
+                </div>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Courses Content -->
+        <div class="dashboard-container">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class='bx bx-book'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>48</h3>
+                        <p>Total Courses</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>42</h3>
+                        <p>Active Courses</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class='bx bx-group'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>1,245</h3>
+                        <p>Total Enrollments</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class='bx bx-archive'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Archived</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-left">
+                    <button class="btn-primary" onclick="openCreateCourseModal()">
+                        <i class='bx bx-plus'></i>
+                        Create Course
+                    </button>
+                    <button class="btn-secondary" onclick="cloneCourse()">
+                        <i class='bx bx-copy'></i>
+                        Clone Course
+                    </button>
+                    <button class="btn-secondary" onclick="exportCourses()">
+                        <i class='bx bx-export'></i>
+                        Export
+                    </button>
+                </div>
+                <div class="actions-right">
+                    <select class="filter-select" id="departmentFilter" onchange="filterByDepartment()">
+                        <option value="all">All Departments</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="math">Mathematics</option>
+                        <option value="eng">Engineering</option>
+                        <option value="physics">Physics</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="draft">Draft</option>
+                        <option value="archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">CS101</div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <h3>Introduction to Programming</h3>
+                    <p class="course-description">Learn the fundamentals of programming using Python. Perfect for beginners.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. Jane Smith</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>156 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>12 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('cs101')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('cs101')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('cs101')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">CS201</div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <h3>Data Structures & Algorithms</h3>
+                    <p class="course-description">Advanced course covering essential data structures and algorithmic techniques.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. John Doe</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>98 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>15 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('cs201')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('cs201')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('cs201')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">MATH301</div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <h3>Linear Algebra</h3>
+                    <p class="course-description">Study of vector spaces, linear transformations, and matrix theory.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. Sarah Wilson</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>72 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>10 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('math301')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('math301')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('math301')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">ENG401</div>
+                        <span class="status-badge draft">Draft</span>
+                    </div>
+                    <h3>Software Engineering</h3>
+                    <p class="course-description">Comprehensive study of software development methodologies and practices.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. Mike Brown</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>0 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>0 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('eng401')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('eng401')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('eng401')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">PHY201</div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <h3>Quantum Mechanics</h3>
+                    <p class="course-description">Introduction to quantum theory and its applications in modern physics.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. Emily Chen</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>45 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>8 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('phy201')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('phy201')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('phy201')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-code">CS301</div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <h3>Database Systems</h3>
+                    <p class="course-description">Design and implementation of relational and NoSQL database systems.</p>
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-user'></i>
+                            <span>Dr. Robert Lee</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-group'></i>
+                            <span>84 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-task'></i>
+                            <span>11 assignments</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-secondary" onclick="viewCourse('cs301')">
+                            <i class='bx bx-show'></i>
+                            View
+                        </button>
+                        <button class="btn-secondary" onclick="editCourse('cs301')">
+                            <i class='bx bx-edit'></i>
+                            Edit
+                        </button>
+                        <button class="btn-icon danger" onclick="deleteCourse('cs301')">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Course Modal -->
+    <div class="modal" id="createCourseModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>Create New Course</h2>
+                <button class="close-modal" onclick="closeCreateCourseModal()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createCourseForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Course Code *</label>
+                            <input type="text" required placeholder="e.g., CS101">
+                        </div>
+                        <div class="form-group">
+                            <label>Course Name *</label>
+                            <input type="text" required placeholder="e.g., Introduction to Programming">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea rows="4" required placeholder="Course description..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Department *</label>
+                            <select required>
+                                <option value="">Select department</option>
+                                <option value="cs">Computer Science</option>
+                                <option value="math">Mathematics</option>
+                                <option value="eng">Engineering</option>
+                                <option value="physics">Physics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Faculty *</label>
+                            <select required>
+                                <option value="">Select faculty</option>
+                                <option value="jane-smith">Dr. Jane Smith</option>
+                                <option value="john-doe">Dr. John Doe</option>
+                                <option value="sarah-wilson">Dr. Sarah Wilson</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Capacity</label>
+                            <input type="number" placeholder="Max students (optional)">
+                        </div>
+                        <div class="form-group">
+                            <label>Status *</label>
+                            <select required>
+                                <option value="draft">Draft</option>
+                                <option value="active">Active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeCreateCourseModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Create Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/courses.js"></script>
+</body>
+</html>

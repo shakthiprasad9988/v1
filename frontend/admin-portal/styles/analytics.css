@@ -1,0 +1,48 @@
+/* Analytics Page */
+.chart-container {
+    padding: 20px;
+    min-height: 300px;
+}
+
+.performance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.performance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(245, 87, 108, 0.05);
+    border-radius: 10px;
+}
+
+.performance-info h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.performance-info p {
+    font-size: 13px;
+    color: #666;
+}
+
+.performance-score {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.performance-score.high {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.performance-score.medium {
+    background: rgba(242, 153, 74, 0.1);
+    color: #f2994a;
+}

@@ -1,0 +1,90 @@
+/* Submissions Page - Reuses assignments.css styles */
+@import url('./assignments.css');
+
+/* Additional Submissions-specific styles */
+
+/* User Cell */
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-cell img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-cell span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* File Cell */
+.file-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-cell i {
+    font-size: 20px;
+    color: #f5576c;
+}
+
+.file-cell span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Time Ago */
+.time-ago {
+    font-size: 12px;
+    color: #999;
+}
+
+.time-ago.late {
+    color: #ff4757;
+    font-weight: 600;
+}
+
+/* Grade Badge */
+.grade-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.grade-badge.high {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.grade-badge.medium {
+    background: rgba(242, 153, 74, 0.1);
+    color: #f2994a;
+}
+
+.grade-badge.low {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}
+
+/* Status Badge for Submissions */
+.status-badge.graded {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.status-badge.pending {
+    background: rgba(242, 153, 74, 0.1);
+    color: #f2994a;
+}
+
+.status-badge.late {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - Faculty Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/assignments.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="grading.html" class="nav-item">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="students.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Assignments</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn-primary" id="createAssignmentBtn">
+                    <i class='bx bx-plus'></i>
+                    Create Assignment
+                </button>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Assignments Content -->
+        <div class="assignments-container">
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                    <button class="filter-btn" data-filter="past">Past</button>
+                </div>
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search assignments..." id="searchInput">
+                </div>
+            </div>
+
+            <!-- Assignments Grid -->
+            <div class="assignments-grid" id="assignmentsGrid">
+                <!-- Assignment Card 1 -->
+                <div class="assignment-card active">
+                    <div class="card-header">
+                        <div class="assignment-title">
+                            <h3>Final Project Submission</h3>
+                            <span class="course-tag">CS 401</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" title="Edit">
+                                <i class='bx bx-edit'></i>
+                            </button>
+                            <button class="btn-icon" title="Delete">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="assignment-description">
+                        Complete software engineering project with documentation and testing
+                    </p>
+                    <div class="assignment-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-calendar'></i>
+                            <span>Due: Oct 25, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>11:59 PM</span>
+                        </div>
+                    </div>
+                    <div class="assignment-stats">
+                        <div class="stat">
+                            <span class="stat-value">45/50</span>
+                            <span class="stat-label">Submitted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">32</span>
+                            <span class="stat-label">Graded</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">13</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-secondary">View Submissions</button>
+                        <button class="btn-primary">Grade Now</button>
+                    </div>
+                </div>
+
+                <!-- Assignment Card 2 -->
+                <div class="assignment-card active">
+                    <div class="card-header">
+                        <div class="assignment-title">
+                            <h3>Assignment 4 - ML Algorithms</h3>
+                            <span class="course-tag">CS 301</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" title="Edit">
+                                <i class='bx bx-edit'></i>
+                            </button>
+                            <button class="btn-icon" title="Delete">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="assignment-description">
+                        Implement and compare different machine learning algorithms
+                    </p>
+                    <div class="assignment-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-calendar'></i>
+                            <span>Due: Oct 28, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>11:59 PM</span>
+                        </div>
+                    </div>
+                    <div class="assignment-stats">
+                        <div class="stat">
+                            <span class="stat-value">32/40</span>
+                            <span class="stat-label">Submitted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">28</span>
+                            <span class="stat-label">Graded</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-secondary">View Submissions</button>
+                        <button class="btn-primary">Grade Now</button>
+                    </div>
+                </div>
+
+                <!-- Assignment Card 3 -->
+                <div class="assignment-card upcoming">
+                    <div class="card-header">
+                        <div class="assignment-title">
+                            <h3>Research Paper</h3>
+                            <span class="course-tag">CS 501</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" title="Edit">
+                                <i class='bx bx-edit'></i>
+                            </button>
+                            <button class="btn-icon" title="Delete">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="assignment-description">
+                        Write a comprehensive research paper on computer networks
+                    </p>
+                    <div class="assignment-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-calendar'></i>
+                            <span>Due: Nov 02, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>11:59 PM</span>
+                        </div>
+                    </div>
+                    <div class="assignment-stats">
+                        <div class="stat">
+                            <span class="stat-value">18/30</span>
+                            <span class="stat-label">Submitted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">10</span>
+                            <span class="stat-label">Graded</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-secondary">View Submissions</button>
+                        <button class="btn-primary">Grade Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Assignment Modal -->
+    <div class="modal" id="createAssignmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Assignment</h2>
+                <button class="close-modal" id="closeModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <form id="createAssignmentForm">
+                <div class="form-group">
+                    <label>Assignment Title</label>
+                    <input type="text" name="title" id="assignmentTitle" required placeholder="Enter assignment title">
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <select name="course" id="assignmentCourse" required>
+                        <option value="">Select course</option>
+                        <option value="cs401">CS 401 - Software Engineering</option>
+                        <option value="cs301">CS 301 - Machine Learning</option>
+                        <option value="cs501">CS 501 - Computer Networks</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" id="assignmentDescription" rows="4" required placeholder="Enter assignment description"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Due Date</label>
+                        <input type="date" name="dueDate" id="assignmentDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Due Time</label>
+                        <input type="time" name="dueTime" id="assignmentDueTime" required value="23:59">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Max Points</label>
+                    <input type="number" name="maxPoints" id="assignmentMaxPoints" required placeholder="100" min="0" value="100">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="submitAssignmentBtn">Create Assignment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/assignments.js"></script>
+</body>
+</html>

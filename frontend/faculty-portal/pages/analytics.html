@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Faculty Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/analytics.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>Faculty Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="grading.html" class="nav-item">
+                <i class='bx bx-edit'></i>
+                <span>Grading</span>
+            </a>
+            <a href="students.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Students</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Analytics</h1>
+            </div>
+            <div class="topbar-right">
+                <select class="time-filter" id="timeFilter">
+                    <option value="week">This Week</option>
+                    <option value="month" selected>This Month</option>
+                    <option value="semester">This Semester</option>
+                    <option value="year">This Year</option>
+                </select>
+                <button class="btn-secondary" id="exportReportBtn">
+                    <i class='bx bx-download'></i>
+                    Export Report
+                </button>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Faculty+User&background=764ba2&color=fff" alt="Profile">
+                    <span>Dr. Faculty</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Analytics Content -->
+        <div class="analytics-container">
+            <!-- Key Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon blue">
+                            <i class='bx bx-file'></i>
+                        </div>
+                        <span class="metric-trend up">
+                            <i class='bx bx-trending-up'></i>
+                            12%
+                        </span>
+                    </div>
+                    <h3>156</h3>
+                    <p>Total Submissions</p>
+                    <div class="metric-footer">
+                        <span>+18 from last month</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon green">
+                            <i class='bx bx-check-circle'></i>
+                        </div>
+                        <span class="metric-trend up">
+                            <i class='bx bx-trending-up'></i>
+                            8%
+                        </span>
+                    </div>
+                    <h3>142</h3>
+                    <p>Graded Submissions</p>
+                    <div class="metric-footer">
+                        <span>91% completion rate</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon orange">
+                        <i class='bx bx-star'></i>
+                    </div>
+                    <h3>85.4%</h3>
+                    <p>Average Grade</p>
+                    <div class="metric-footer">
+                        <span>Above target (80%)</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon purple">
+                            <i class='bx bx-time'></i>
+                        </div>
+                        <span class="metric-trend down">
+                            <i class='bx bx-trending-down'></i>
+                            5%
+                        </span>
+                    </div>
+                    <h3>2.3 days</h3>
+                    <p>Avg. Grading Time</p>
+                    <div class="metric-footer">
+                        <span>Improved efficiency</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="charts-row">
+                <!-- Submission Trends -->
+                <div class="chart-card large">
+                    <div class="card-header">
+                        <h3>Submission Trends</h3>
+                        <div class="chart-actions">
+                            <button class="chart-btn active" data-period="week">Week</button>
+                            <button class="chart-btn" data-period="month">Month</button>
+                            <button class="chart-btn" data-period="semester">Semester</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="submissionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Grade Distribution -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Grade Distribution</h3>
+                        <button class="btn-icon" title="More options">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="gradeChart"></canvas>
+                    </div>
+                    <div class="grade-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #56ab2f;"></span>
+                            <span>A (90-100%)</span>
+                            <strong>24</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #667eea;"></span>
+                            <span>B (80-89%)</span>
+                            <strong>45</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #f2994a;"></span>
+                            <span>C (70-79%)</span>
+                            <strong>32</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #ff4757;"></span>
+                            <span>D/F (<70%)</span>
+                            <strong>11</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="charts-row">
+                <!-- Student Performance -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Student Performance</h3>
+                        <select class="course-select">
+                            <option>All Courses</option>
+                            <option>CS 401</option>
+                            <option>CS 301</option>
+                            <option>CS 501</option>
+                        </select>
+                    </div>
+                    <div class="performance-list">
+                        <div class="performance-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=667eea&color=fff" alt="Student">
+                                <div>
+                                    <h4>Sarah Williams</h4>
+                                    <span>2021CS004</span>
+                                </div>
+                            </div>
+                            <div class="performance-score">
+                                <span class="score high">95%</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performance-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="Student">
+                                <div>
+                                    <h4>John Doe</h4>
+                                    <span>2021CS001</span>
+                                </div>
+                            </div>
+                            <div class="performance-score">
+                                <span class="score high">92%</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performance-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=667eea&color=fff" alt="Student">
+                                <div>
+                                    <h4>Jane Smith</h4>
+                                    <span>2021CS002</span>
+                                </div>
+                            </div>
+                            <div class="performance-score">
+                                <span class="score medium">88%</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performance-item">
+                            <div class="student-info">
+                                <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=667eea&color=fff" alt="Student">
+                                <div>
+                                    <h4>Mike Johnson</h4>
+                                    <span>2021CS003</span>
+                                </div>
+                            </div>
+                            <div class="performance-score">
+                                <span class="score low">68%</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill warning" style="width: 68%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignment Completion -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Assignment Completion</h3>
+                        <button class="btn-icon" title="More options">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </button>
+                    </div>
+                    <div class="completion-list">
+                        <div class="completion-item">
+                            <div class="completion-info">
+                                <h4>Assignment 3 - Data Structures</h4>
+                                <span>Due: Oct 25, 2025</span>
+                            </div>
+                            <div class="completion-stats">
+                                <span class="completion-rate">90%</span>
+                                <div class="completion-bar">
+                                    <div class="completion-fill" style="width: 90%;"></div>
+                                </div>
+                                <span class="completion-count">45/50</span>
+                            </div>
+                        </div>
+                        <div class="completion-item">
+                            <div class="completion-info">
+                                <h4>Final Project</h4>
+                                <span>Due: Oct 28, 2025</span>
+                            </div>
+                            <div class="completion-stats">
+                                <span class="completion-rate">80%</span>
+                                <div class="completion-bar">
+                                    <div class="completion-fill" style="width: 80%;"></div>
+                                </div>
+                                <span class="completion-count">32/40</span>
+                            </div>
+                        </div>
+                        <div class="completion-item">
+                            <div class="completion-info">
+                                <h4>Assignment 4 - ML</h4>
+                                <span>Due: Nov 02, 2025</span>
+                            </div>
+                            <div class="completion-stats">
+                                <span class="completion-rate">60%</span>
+                                <div class="completion-bar">
+                                    <div class="completion-fill warning" style="width: 60%;"></div>
+                                </div>
+                                <span class="completion-count">18/30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Timeline -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                        <button class="btn-icon" title="View all">
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </button>
+                    </div>
+                    <div class="activity-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon success">
+                                <i class='bx bx-check'></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Graded 12 submissions</h4>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon info">
+                                <i class='bx bx-upload'></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>New submissions received</h4>
+                                <span>5 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon primary">
+                                <i class='bx bx-task'></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Created new assignment</h4>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon warning">
+                                <i class='bx bx-error'></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Deadline approaching</h4>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/system.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo"><i class='bx bx-shield'></i><span>Admin Portal</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item"><i class='bx bx-home'></i><span>Dashboard</span></a>
+            <a href="users.html" class="nav-item"><i class='bx bx-group'></i><span>Users</span></a>
+            <a href="courses.html" class="nav-item"><i class='bx bx-book'></i><span>Courses</span></a>
+            <a href="assignments.html" class="nav-item"><i class='bx bx-task'></i><span>Assignments</span></a>
+            <a href="submissions.html" class="nav-item"><i class='bx bx-folder-open'></i><span>Submissions</span></a>
+            <a href="analytics.html" class="nav-item"><i class='bx bx-bar-chart-alt-2'></i><span>Analytics</span></a>
+            <a href="reports.html" class="nav-item"><i class='bx bx-file'></i><span>Reports</span></a>
+            <a href="system.html" class="nav-item active"><i class='bx bx-cog'></i><span>System</span></a>
+            <a href="security.html" class="nav-item"><i class='bx bx-shield'></i><span>Security</span></a>
+            <a href="notifications.html" class="nav-item"><i class='bx bx-bell'></i><span>Notifications</span></a>
+            <a href="support.html" class="nav-item"><i class='bx bx-support'></i><span>Support</span></a>
+            <a href="maintenance.html" class="nav-item"><i class='bx bx-wrench'></i><span>Maintenance</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item"><i class='bx bx-cog'></i><span>Settings</span></a>
+            <a href="../../shared/pages/login.html" class="nav-item"><i class='bx bx-log-out'></i><span>Logout</span></a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+                <h1>System Settings</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="notification-btn"><i class='bx bx-bell'></i><span class="badge">3</span></button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span><i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class='bx bx-server'></i></div>
+                    <div class="stat-info"><h3>98.5%</h3><p>Uptime</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class='bx bx-data'></i></div>
+                    <div class="stat-info"><h3>2.4 GB</h3><p>Database Size</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class='bx bx-cloud'></i></div>
+                    <div class="stat-info"><h3>45 GB</h3><p>Storage Used</p></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class='bx bx-memory-card'></i></div>
+                    <div class="stat-info"><h3>62%</h3><p>Memory Usage</p></div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header"><h2>System Status</h2></div>
+                    <div class="system-status">
+                        <div class="status-item">
+                            <div class="status-label"><i class='bx bx-server'></i><span>Web Server</span></div>
+                            <span class="status-badge active">Running</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label"><i class='bx bx-data'></i><span>Database</span></div>
+                            <span class="status-badge active">Connected</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label"><i class='bx bx-cloud'></i><span>Storage</span></div>
+                            <span class="status-badge warning">75% Full</span>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label"><i class='bx bx-shield'></i><span>Security</span></div>
+                            <span class="status-badge active">Secure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><h2>Quick Actions</h2></div>
+                    <div class="quick-actions-list">
+                        <button class="action-item" onclick="clearCache()">
+                            <i class='bx bx-trash'></i>
+                            <span>Clear Cache</span>
+                        </button>
+                        <button class="action-item" onclick="optimizeDatabase()">
+                            <i class='bx bx-data'></i>
+                            <span>Optimize Database</span>
+                        </button>
+                        <button class="action-item" onclick="backupSystem()">
+                            <i class='bx bx-download'></i>
+                            <span>Backup System</span>
+                        </button>
+                        <button class="action-item danger" onclick="restartServer()">
+                            <i class='bx bx-refresh'></i>
+                            <span>Restart Server</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h2>System Logs</h2></div>
+                <div class="logs-container">
+                    <div class="log-item info">
+                        <span class="log-time">10:45 AM</span>
+                        <span class="log-message">System backup completed successfully</span>
+                    </div>
+                    <div class="log-item success">
+                        <span class="log-time">09:30 AM</span>
+                        <span class="log-message">Database optimization completed</span>
+                    </div>
+                    <div class="log-item warning">
+                        <span class="log-time">08:15 AM</span>
+                        <span class="log-message">Storage usage exceeded 70%</span>
+                    </div>
+                    <div class="log-item error">
+                        <span class="log-time">07:00 AM</span>
+                        <span class="log-message">Failed login attempt from IP 192.168.1.100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/system.js"></script>
+</body>
+</html>

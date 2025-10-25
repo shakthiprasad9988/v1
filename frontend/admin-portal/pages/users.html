@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/users.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-shield'></i>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="users.html" class="nav-item active">
+                <i class='bx bx-group'></i>
+                <span>Users</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class='bx bx-book'></i>
+                <span>Courses</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class='bx bx-file'></i>
+                <span>Reports</span>
+            </a>
+            <a href="system.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>System</span>
+            </a>
+            <a href="security.html" class="nav-item">
+                <i class='bx bx-shield'></i>
+                <span>Security</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class='bx bx-bell'></i>
+                <span>Notifications</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class='bx bx-support'></i>
+                <span>Support</span>
+            </a>
+            <a href="maintenance.html" class="nav-item">
+                <i class='bx bx-wrench'></i>
+                <span>Maintenance</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Users Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search users..." id="searchUsers">
+                </div>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Users Content -->
+        <div class="dashboard-container">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>856</h3>
+                        <p>Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class='bx bx-user-check'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>42</h3>
+                        <p>Faculty</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pink">
+                        <i class='bx bx-shield'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Admins</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class='bx bx-user-plus'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>23</h3>
+                        <p>New This Week</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-left">
+                    <button class="btn-primary" onclick="openCreateUserModal()">
+                        <i class='bx bx-user-plus'></i>
+                        Create User
+                    </button>
+                    <button class="btn-secondary" onclick="importUsers()">
+                        <i class='bx bx-import'></i>
+                        Import CSV
+                    </button>
+                    <button class="btn-secondary" onclick="exportUsers()">
+                        <i class='bx bx-export'></i>
+                        Export
+                    </button>
+                </div>
+                <div class="actions-right">
+                    <select class="filter-select" id="roleFilter" onchange="filterByRole()">
+                        <option value="all">All Roles</option>
+                        <option value="student">Students</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="admin">Admins</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Last Active</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td><input type="checkbox" class="user-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff"
+                                            alt="User">
+                                        <span>John Doe</span>
+                                    </div>
+                                </td>
+                                <td>john.doe@university.edu</td>
+                                <td><span class="role-badge student">Student</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 15, 2024</td>
+                                <td>2 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewUser('john-doe')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="editUser('john-doe')" title="Edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteUser('john-doe')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="user-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=56ab2f&color=fff"
+                                            alt="User">
+                                        <span>Dr. Jane Smith</span>
+                                    </div>
+                                </td>
+                                <td>jane.smith@university.edu</td>
+                                <td><span class="role-badge faculty">Faculty</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Sep 1, 2023</td>
+                                <td>1 day ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewUser('jane-smith')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="editUser('jane-smith')" title="Edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteUser('jane-smith')"
+                                            title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="user-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=f2994a&color=fff"
+                                            alt="User">
+                                        <span>Mike Johnson</span>
+                                    </div>
+                                </td>
+                                <td>mike.j@university.edu</td>
+                                <td><span class="role-badge student">Student</span></td>
+                                <td><span class="status-badge inactive">Inactive</span></td>
+                                <td>Feb 20, 2024</td>
+                                <td>1 week ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewUser('mike-johnson')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="editUser('mike-johnson')" title="Edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteUser('mike-johnson')"
+                                            title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="user-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=764ba2&color=fff"
+                                            alt="User">
+                                        <span>Sarah Williams</span>
+                                    </div>
+                                </td>
+                                <td>sarah.w@university.edu</td>
+                                <td><span class="role-badge student">Student</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 10, 2024</td>
+                                <td>5 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewUser('sarah-williams')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="editUser('sarah-williams')" title="Edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteUser('sarah-williams')"
+                                            title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="user-checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff"
+                                            alt="User">
+                                        <span>Admin User</span>
+                                    </div>
+                                </td>
+                                <td>admin@university.edu</td>
+                                <td><span class="role-badge admin">Admin</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 1, 2023</td>
+                                <td>Just now</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewUser('admin-user')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="editUser('admin-user')" title="Edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteUser('admin-user')"
+                                            title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn-secondary" onclick="previousPage()">
+                        <i class='bx bx-chevron-left'></i>
+                        Previous
+                    </button>
+                    <div class="page-numbers">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span>...</span>
+                        <button class="page-btn">10</button>
+                    </div>
+                    <button class="btn-secondary" onclick="nextPage()">
+                        Next
+                        <i class='bx bx-chevron-right'></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bulk Actions Bar (Hidden by default) -->
+            <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                <span id="selectedCount">0 users selected</span>
+                <div class="bulk-buttons">
+                    <button class="btn-secondary" onclick="bulkActivate()">
+                        <i class='bx bx-check'></i>
+                        Activate
+                    </button>
+                    <button class="btn-secondary" onclick="bulkDeactivate()">
+                        <i class='bx bx-x'></i>
+                        Deactivate
+                    </button>
+                    <button class="btn-danger" onclick="bulkDelete()">
+                        <i class='bx bx-trash'></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create User Modal -->
+    <div class="modal" id="createUserModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New User</h2>
+                <button class="close-modal" onclick="closeCreateUserModal()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createUserForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name *</label>
+                            <input type="text" required placeholder="Enter first name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name *</label>
+                            <input type="text" required placeholder="Enter last name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="user@university.edu">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Role *</label>
+                            <select required>
+                                <option value="">Select role</option>
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status *</label>
+                            <select required>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password *</label>
+                        <input type="password" required placeholder="Enter password">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeCreateUserModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Create User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/users.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - Admin Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/assignments.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-shield'></i>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Users</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class='bx bx-book'></i>
+                <span>Courses</span>
+            </a>
+            <a href="assignments.html" class="nav-item active">
+                <i class='bx bx-task'></i>
+                <span>Assignments</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder-open'></i>
+                <span>Submissions</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class='bx bx-file'></i>
+                <span>Reports</span>
+            </a>
+            <a href="system.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>System</span>
+            </a>
+            <a href="security.html" class="nav-item">
+                <i class='bx bx-shield'></i>
+                <span>Security</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class='bx bx-bell'></i>
+                <span>Notifications</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class='bx bx-support'></i>
+                <span>Support</span>
+            </a>
+            <a href="maintenance.html" class="nav-item">
+                <i class='bx bx-wrench'></i>
+                <span>Maintenance</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Assignments Management</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search assignments..." id="searchAssignments">
+                </div>
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=f5576c&color=fff" alt="Profile">
+                    <span>Admin</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Assignments Content -->
+        <div class="dashboard-container">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class='bx bx-task'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>324</h3>
+                        <p>Total Assignments</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>287</h3>
+                        <p>Active</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class='bx bx-time'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Due This Week</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class='bx bx-error'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Overdue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-left">
+                    <button class="btn-secondary" onclick="exportAssignments()">
+                        <i class='bx bx-export'></i>
+                        Export
+                    </button>
+                    <button class="btn-secondary" onclick="bulkExtendDeadline()">
+                        <i class='bx bx-time'></i>
+                        Extend Deadlines
+                    </button>
+                </div>
+                <div class="actions-right">
+                    <select class="filter-select" id="courseFilter" onchange="filterByCourse()">
+                        <option value="all">All Courses</option>
+                        <option value="cs101">CS101</option>
+                        <option value="cs201">CS201</option>
+                        <option value="math301">MATH301</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Assignments Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+                                <th>Assignment</th>
+                                <th>Course</th>
+                                <th>Faculty</th>
+                                <th>Due Date</th>
+                                <th>Submissions</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assignmentsTableBody">
+                            <tr>
+                                <td><input type="checkbox" class="assignment-checkbox"></td>
+                                <td>
+                                    <div class="assignment-cell">
+                                        <i class='bx bx-file-blank'></i>
+                                        <div>
+                                            <strong>Python Basics - Variables</strong>
+                                            <span class="assignment-subtitle">Introduction to variables and data types</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="course-badge cs">CS101</span></td>
+                                <td>Dr. Jane Smith</td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 30, 2025</span>
+                                        <span class="time-remaining due-soon">2 days left</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <span>142/156</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 91%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewAssignment('py-basics')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="extendDeadline('py-basics')" title="Extend">
+                                            <i class='bx bx-time'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteAssignment('py-basics')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="assignment-checkbox"></td>
+                                <td>
+                                    <div class="assignment-cell">
+                                        <i class='bx bx-file-blank'></i>
+                                        <div>
+                                            <strong>Binary Search Tree Implementation</strong>
+                                            <span class="assignment-subtitle">Implement BST with insert, delete, search</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="course-badge cs">CS201</span></td>
+                                <td>Dr. John Doe</td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Nov 5, 2025</span>
+                                        <span class="time-remaining">8 days left</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <span>45/98</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 46%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewAssignment('bst-impl')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="extendDeadline('bst-impl')" title="Extend">
+                                            <i class='bx bx-time'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteAssignment('bst-impl')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="assignment-checkbox"></td>
+                                <td>
+                                    <div class="assignment-cell">
+                                        <i class='bx bx-file-blank'></i>
+                                        <div>
+                                            <strong>Matrix Operations</strong>
+                                            <span class="assignment-subtitle">Solve matrix multiplication problems</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="course-badge math">MATH301</span></td>
+                                <td>Dr. Sarah Wilson</td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Oct 25, 2025</span>
+                                        <span class="time-remaining overdue">3 days overdue</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <span>68/72</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 94%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge overdue">Overdue</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewAssignment('matrix-ops')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="extendDeadline('matrix-ops')" title="Extend">
+                                            <i class='bx bx-time'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteAssignment('matrix-ops')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="assignment-checkbox"></td>
+                                <td>
+                                    <div class="assignment-cell">
+                                        <i class='bx bx-file-blank'></i>
+                                        <div>
+                                            <strong>Web Development Project</strong>
+                                            <span class="assignment-subtitle">Build a responsive website</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="course-badge cs">CS101</span></td>
+                                <td>Dr. Jane Smith</td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Nov 15, 2025</span>
+                                        <span class="time-remaining">18 days left</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <span>23/156</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 15%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewAssignment('web-project')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="extendDeadline('web-project')" title="Extend">
+                                            <i class='bx bx-time'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteAssignment('web-project')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="assignment-checkbox"></td>
+                                <td>
+                                    <div class="assignment-cell">
+                                        <i class='bx bx-file-blank'></i>
+                                        <div>
+                                            <strong>Final Exam Preparation</strong>
+                                            <span class="assignment-subtitle">Review all course materials</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="course-badge cs">CS201</span></td>
+                                <td>Dr. John Doe</td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>Dec 1, 2025</span>
+                                        <span class="time-remaining">34 days left</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <span>0/98</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge upcoming">Upcoming</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewAssignment('final-prep')" title="View">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-icon" onclick="extendDeadline('final-prep')" title="Extend">
+                                            <i class='bx bx-time'></i>
+                                        </button>
+                                        <button class="btn-icon danger" onclick="deleteAssignment('final-prep')" title="Delete">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn-secondary" onclick="previousPage()">
+                        <i class='bx bx-chevron-left'></i>
+                        Previous
+                    </button>
+                    <div class="page-numbers">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span>...</span>
+                        <button class="page-btn">15</button>
+                    </div>
+                    <button class="btn-secondary" onclick="nextPage()">
+                        Next
+                        <i class='bx bx-chevron-right'></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bulk Actions Bar -->
+            <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                <span id="selectedCount">0 assignments selected</span>
+                <div class="bulk-buttons">
+                    <button class="btn-secondary" onclick="bulkExtendSelected()">
+                        <i class='bx bx-time'></i>
+                        Extend Deadline
+                    </button>
+                    <button class="btn-danger" onclick="bulkDeleteSelected()">
+                        <i class='bx bx-trash'></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/topbar.js"></script>
+    <script src="../utils/assignments.js"></script>
+</body>
+</html>

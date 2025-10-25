@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - File Submission Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/calendar.css">
+    <link rel="stylesheet" href="../styles/global-search.css">
+    <link rel="stylesheet" href="../styles/notifications.css">
+    <link rel="stylesheet" href="../styles/transitions.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>FilePortal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="upload.html" class="nav-item">
+                <i class='bx bx-upload'></i>
+                <span>Upload Files</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder'></i>
+                <span>My Submissions</span>
+            </a>
+            <a href="feedback.html" class="nav-item">
+                <i class='bx bx-message-square-detail'></i>
+                <span>Feedback & Grades</span>
+            </a>
+            <a href="collaboration.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Collaboration</span>
+            </a>
+            <a href="calendar.html" class="nav-item active">
+                <i class='bx bx-calendar'></i>
+                <span>Calendar</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="chat.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Calendar</h1>
+            </div>
+            
+            <!-- Global Search -->
+            <div class="global-search-container">
+                <div class="global-search-wrapper">
+                    <i class='bx bx-search search-icon'></i>
+                    <input type="text" id="globalSearchInput" class="global-search-input" placeholder="Search submissions, feedback, groups..." autocomplete="off">
+                    <span class="search-shortcut">Ctrl+K</span>
+                </div>
+                <div id="globalSearchResults" class="global-search-results"></div>
+            </div>
+            
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Student+User&background=667eea&color=fff" alt="Profile">
+                    <span>Student User</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Calendar Container -->
+        <div class="calendar-container">
+            <!-- Calendar Card -->
+            <div class="calendar-card">
+                <div class="calendar-header">
+                    <h2 id="currentMonth">October 2025</h2>
+                    <div class="calendar-nav">
+                        <button class="nav-btn" id="prevMonth">
+                            <i class='bx bx-chevron-left'></i>
+                        </button>
+                        <button class="today-btn" id="todayBtn">Today</button>
+                        <button class="nav-btn" id="nextMonth">
+                            <i class='bx bx-chevron-right'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="calendarGrid" class="calendar-grid">
+                    <!-- Calendar will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Events Sidebar -->
+            <div class="events-sidebar">
+                <!-- Upcoming Events -->
+                <div class="events-card">
+                    <h3>
+                        <i class='bx bx-time-five'></i>
+                        Upcoming Deadlines
+                    </h3>
+                    <div id="eventsList" class="events-list">
+                        <!-- Events will be rendered here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="calendar-legend">
+                    <h4>Legend</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color urgent"></div>
+                            <span>Due in 2 days or less</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color warning"></div>
+                            <span>Due in 3-7 days</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color success"></div>
+                            <span>Due in 8+ days</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color today"></div>
+                            <span>Today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/notifications.js"></script>
+    <script src="../utils/dashboard.js"></script>
+    <script src="../utils/calendar.js"></script>
+    <script src="../utils/global-search.js"></script>
+    <script src="../utils/search-filters.js"></script>
+    <script src="../utils/lazy-loader.js" defer></script>
+    <script src="../utils/performance-monitor.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.error('❌ SW registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>

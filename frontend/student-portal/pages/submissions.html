@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Submissions - File Submission Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/submissions.css">
+    <link rel="stylesheet" href="../styles/global-search.css">
+    <link rel="stylesheet" href="../styles/notifications.css">
+    <link rel="stylesheet" href="../styles/transitions.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>FilePortal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="upload.html" class="nav-item">
+                <i class='bx bx-upload'></i>
+                <span>Upload Files</span>
+            </a>
+            <a href="submissions.html" class="nav-item active">
+                <i class='bx bx-folder'></i>
+                <span>My Submissions</span>
+            </a>
+            <a href="feedback.html" class="nav-item">
+                <i class='bx bx-message-square-detail'></i>
+                <span>Feedback & Grades</span>
+            </a>
+            <a href="collaboration.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Collaboration</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <i class='bx bx-calendar'></i>
+                <span>Calendar</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="chat.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>My Submissions</h1>
+            </div>
+
+            <!-- Global Search -->
+            <div class="global-search-container">
+                <div class="global-search-wrapper">
+                    <i class='bx bx-search search-icon'></i>
+                    <input type="text" id="globalSearchInput" class="global-search-input"
+                        placeholder="Search submissions, feedback, groups..." autocomplete="off">
+                    <span class="search-shortcut">Ctrl+K</span>
+                </div>
+                <div id="globalSearchResults" class="global-search-results">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Student+User&background=667eea&color=fff" alt="Profile">
+                    <span>Student User</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Submissions Container -->
+        <div class="submissions-container">
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search submissions...">
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="pending">Pending</button>
+                    <button class="filter-tab" data-filter="under-review">Under Review</button>
+                    <button class="filter-tab" data-filter="approved">Approved</button>
+                    <button class="filter-tab" data-filter="rejected">Rejected</button>
+                </div>
+            </div>
+
+            <!-- Submissions Grid -->
+            <div id="submissionsGrid" class="submissions-grid">
+                <!-- Submissions will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Detailed Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2><i class='bx bx-message-square-detail'></i> Detailed Feedback</h2>
+                <button class="close-modal" onclick="closeFeedbackModal()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body" id="feedbackModalBody">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Grade Appeal Modal -->
+    <div id="appealModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class='bx bx-message-error'></i> Request Grade Appeal</h2>
+                <button class="close-modal" onclick="closeAppealModal()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="appeal-info">
+                    <h3 id="appealSubmissionTitle" style="font-size: 16px; margin-bottom: 10px; color: var(--dark);">
+                    </h3>
+                    <p style="font-size: 14px; color: var(--gray); margin-bottom: 20px;">
+                        Current Grade: <strong id="appealCurrentGrade" style="color: var(--primary-color);"></strong>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for Appeal</label>
+                    <select id="appealReason" class="form-control">
+                        <option value="">Select a reason...</option>
+                        <option value="grading-error">Grading Error</option>
+                        <option value="rubric-misapplication">Rubric Misapplication</option>
+                        <option value="missing-feedback">Missing or Unclear Feedback</option>
+                        <option value="technical-issue">Technical Issue During Submission</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Detailed Explanation (minimum 50 characters)</label>
+                    <textarea id="appealExplanation" class="form-control" rows="6"
+                        placeholder="Please provide a detailed explanation for your grade appeal..."></textarea>
+                    <span class="char-count" id="appealCharCount">0 / 50 characters</span>
+                </div>
+
+                <div class="appeal-actions">
+                    <button class="btn btn-secondary" onclick="closeAppealModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="submitAppeal()">
+                        <i class='bx bx-send'></i> Submit Appeal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback History Modal -->
+    <div id="feedbackHistoryModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2><i class='bx bx-history'></i> Feedback History</h2>
+                <button class="close-modal" onclick="closeFeedbackHistoryModal()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="history-filters">
+                    <select id="historyFilterCourse" class="filter-select">
+                        <option value="all">All Courses</option>
+                        <option value="data-structures">Data Structures</option>
+                        <option value="web-dev">Web Development</option>
+                        <option value="database">Database Systems</option>
+                        <option value="ml">Machine Learning</option>
+                    </select>
+                    <select id="historyFilterType" class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="graded">Graded</option>
+                        <option value="comments">Comments Only</option>
+                        <option value="appeals">Appeals</option>
+                    </select>
+                </div>
+
+                <div class="feedback-stats">
+                    <div class="stat-card">
+                        <i class='bx bx-bar-chart'></i>
+                        <div>
+                            <h4>Average Grade</h4>
+                            <p class="stat-value">B+</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class='bx bx-trending-up'></i>
+                        <div>
+                            <h4>Improvement</h4>
+                            <p class="stat-value">+12%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class='bx bx-message-dots'></i>
+                        <div>
+                            <h4>Total Feedback</h4>
+                            <p class="stat-value">24</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="feedbackHistoryList" class="feedback-history-list">
+                    <!-- History items will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/notifications.js"></script>
+    <script src="../utils/dashboard.js"></script>
+    <script src="../utils/submissions.js"></script>
+    <script src="../utils/global-search.js"></script>
+    <script src="../utils/search-filters.js"></script>
+    <script src="../utils/lazy-loader.js" defer></script>
+    <script src="../utils/performance-monitor.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.error('❌ SW registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- File Preview Modal -->
+<div id="filePreviewModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="previewFileName">File Preview</h2>
+            <button class="close-modal" onclick="closeFilePreview()">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="modal-body" id="previewContent">
+            <!-- Preview content will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<!-- Share Modal -->
+<div id="shareModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Share Submission</h2>
+            <button class="close-modal" onclick="closeShareModal()">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h3 id="shareSubmissionTitle" style="font-size: 16px; margin-bottom: 20px; color: var(--dark);"></h3>
+
+            <div class="share-options">
+                <div>
+                    <label
+                        style="font-size: 14px; font-weight: 500; color: var(--dark); margin-bottom: 10px; display: block;">Share
+                        Link</label>
+                    <div class="share-link-container">
+                        <input type="text" id="shareLinkInput" readonly>
+                        <button class="btn btn-primary" onclick="copyShareLink()">
+                            <i class='bx bx-copy'></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        style="font-size: 14px; font-weight: 500; color: var(--dark); margin-bottom: 10px; display: block;">Share
+                        Via</label>
+                    <div class="share-methods">
+                        <button class="share-method-btn" onclick="shareViaEmail()">
+                            <i class='bx bx-envelope'></i>
+                            <span>Email</span>
+                        </button>
+                        <button class="share-method-btn"
+                            onclick="showNotification('info', 'WhatsApp sharing coming soon!')">
+                            <i class='bx bxl-whatsapp'></i>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button class="share-method-btn"
+                            onclick="showNotification('info', 'Slack sharing coming soon!')">
+                            <i class='bx bxl-slack'></i>
+                            <span>Slack</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

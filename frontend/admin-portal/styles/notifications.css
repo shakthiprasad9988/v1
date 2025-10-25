@@ -1,0 +1,171 @@
+/* Notifications Page */
+.notification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: white;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f5576c;
+    box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ticket-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(245, 87, 108, 0.05);
+    border-radius: 10px;
+}
+
+.ticket-info {
+    flex: 1;
+}
+
+.ticket-info h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.ticket-info p {
+    font-size: 13px;
+    color: #666;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-badge.active {
+    background: rgba(86, 171, 47, 0.1);
+    color: #56ab2f;
+}
+
+.status-badge.warning {
+    background: rgba(242, 153, 74, 0.1);
+    color: #f2994a;
+}
+
+.maintenance-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(245, 87, 108, 0.05);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+}
+
+.task-btn:hover {
+    background: rgba(245, 87, 108, 0.1);
+    transform: translateX(5px);
+}
+
+.task-btn.danger {
+    background: rgba(255, 71, 87, 0.05);
+}
+
+.task-btn.danger:hover {
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.task-btn i {
+    font-size: 32px;
+    color: #f5576c;
+}
+
+.task-btn.danger i {
+    color: #ff4757;
+}
+
+.task-btn h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.task-btn p {
+    font-size: 13px;
+    color: #666;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(245, 87, 108, 0.05);
+    border-radius: 10px;
+}
+
+.schedule-info h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.schedule-info p {
+    font-size: 13px;
+    color: #666;
+}

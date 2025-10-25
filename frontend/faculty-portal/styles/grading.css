@@ -1,0 +1,842 @@
+@import url('./dashboard.css');
+
+.grading-container {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+    height: calc(100vh - 80px);
+}
+
+/* Smooth scrolling for all scrollable elements */
+.submission-panel,
+.grading-form,
+.code-preview {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+}
+
+.grading-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: calc(100vh - 120px);
+    align-items: start;
+}
+
+/* Submission Panel */
+.submission-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 140px);
+    height: 100%;
+}
+
+/* Custom Scrollbar for Submission Panel */
+.submission-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.submission-panel::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.submission-panel::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 10px;
+}
+
+.submission-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
+
+.student-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.student-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.student-info h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.student-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+.assignment-info {
+    margin-bottom: 25px;
+}
+
+.assignment-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 8px;
+}
+
+.info-item i {
+    font-size: 24px;
+    color: #667eea;
+}
+
+.info-item .label {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 2px;
+}
+
+.info-item .value {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.status-on-time {
+    color: #56ab2f !important;
+}
+
+.status-late {
+    color: #ff4757 !important;
+}
+
+/* Submission Files */
+.submission-files {
+    margin-bottom: 25px;
+}
+
+.submission-files h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.file-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.file-item > i {
+    font-size: 28px;
+    color: #667eea;
+    min-width: 28px;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #667eea;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-icon:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.1);
+}
+
+.btn-icon i {
+    font-size: 20px;
+}
+
+.file-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #999;
+}
+
+/* File Preview */
+.file-preview {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.file-preview h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.code-preview {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.code-preview::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-preview::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.code-preview::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.code-preview::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.code-preview pre {
+    margin: 0;
+}
+
+.code-preview code {
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Grading Panel */
+.grading-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+    max-height: calc(100vh - 140px);
+}
+
+.grading-form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 220px);
+    height: 100%;
+}
+
+/* Custom Scrollbar for Grading Form */
+.grading-form::-webkit-scrollbar {
+    width: 8px;
+}
+
+.grading-form::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.grading-form::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 10px;
+}
+
+.grading-form::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
+
+.grading-form h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.grading-form h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Rubric Section */
+.rubric-section {
+    margin-bottom: 25px;
+}
+
+.rubric-item {
+    margin-bottom: 20px;
+}
+
+.rubric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.rubric-name {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.rubric-points {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.points-input {
+    width: 50px;
+    padding: 4px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.points-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.rubric-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rubric-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transition: width 0.3s;
+}
+
+.total-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.score-value {
+    font-size: 24px;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-bottom: 25px;
+}
+
+.feedback-section textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    transition: all 0.3s;
+}
+
+.feedback-section textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Quick Comments */
+.quick-comments {
+    margin-bottom: 25px;
+}
+
+.comment-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 8px 16px;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.chip:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Grading Actions */
+.grading-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.grading-actions button {
+    flex: 1;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-secondary {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Submission Navigation */
+.submission-navigation {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-info {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+
+/* Large Desktop (> 1400px) - Optimal spacing */
+@media (min-width: 1400px) {
+    .grading-container {
+        padding: 30px;
+    }
+    
+    .grading-layout {
+        gap: 25px;
+    }
+}
+
+/* Desktop (1200px - 1400px) - Standard view */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .grading-layout {
+        gap: 20px;
+    }
+}
+
+/* Tablet Landscape (992px - 1199px) - Two columns maintained */
+@media (max-width: 1199px) {
+    .grading-layout {
+        gap: 15px;
+    }
+    
+    .submission-panel,
+    .grading-form {
+        padding: 25px;
+    }
+}
+
+/* Tablet Portrait (768px - 991px) - Single column */
+@media (max-width: 991px) {
+    .grading-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 20px;
+    }
+
+    .submission-panel {
+        max-height: 600px;
+        height: auto;
+    }
+    
+    .grading-panel {
+        max-height: none;
+        height: auto;
+    }
+    
+    .grading-form {
+        max-height: 800px;
+        height: auto;
+    }
+    
+    .grading-container {
+        padding: 20px;
+        height: auto;
+        overflow-y: auto;
+    }
+}
+
+/* Mobile Large (576px - 767px) - Optimized for phones */
+@media (max-width: 767px) {
+    .grading-container {
+        padding: 15px;
+    }
+    
+    .submission-panel,
+    .grading-form {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .student-header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .student-header img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .rubric-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .rubric-points {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .comment-chips {
+        flex-direction: column;
+    }
+
+    .chip {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .grading-actions {
+        flex-direction: column;
+    }
+    
+    .grading-actions button {
+        width: 100%;
+    }
+    
+    .submission-navigation {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .file-item {
+        flex-wrap: wrap;
+    }
+    
+    .info-grid {
+        gap: 10px;
+    }
+    
+    .info-item {
+        padding: 10px;
+    }
+}
+
+/* Mobile Small (< 576px) - Compact view */
+@media (max-width: 575px) {
+    .grading-container {
+        padding: 10px;
+    }
+    
+    .submission-panel,
+    .grading-form {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .grading-form h3 {
+        font-size: 18px;
+    }
+    
+    .grading-form h4 {
+        font-size: 15px;
+    }
+    
+    .student-info h2 {
+        font-size: 20px;
+    }
+    
+    .assignment-info h3 {
+        font-size: 16px;
+    }
+    
+    .points-input {
+        width: 45px;
+        padding: 3px 6px;
+        font-size: 13px;
+    }
+    
+    .total-score {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .score-value {
+        font-size: 20px;
+    }
+    
+    .code-preview {
+        padding: 15px;
+        font-size: 12px;
+    }
+    
+    .nav-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 3000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast i {
+    font-size: 24px;
+}
+
+.toast-success {
+    border-left: 4px solid #56ab2f;
+}
+
+.toast-success i {
+    color: #56ab2f;
+}
+
+.toast-error {
+    border-left: 4px solid #ff4757;
+}
+
+.toast-error i {
+    color: #ff4757;
+}
+
+.toast-warning {
+    border-left: 4px solid #f2994a;
+}
+
+.toast-warning i {
+    color: #f2994a;
+}
+
+.toast-info {
+    border-left: 4px solid #667eea;
+}
+
+.toast-info i {
+    color: #667eea;
+}
+
+.toast span {
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Enhanced Spacing and Borders */
+.student-header {
+    border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.assignment-info {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.submission-files {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.file-preview {
+    padding-bottom: 10px;
+}
+
+.rubric-section {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feedback-section {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.quick-comments {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure proper spacing at bottom of scrollable panels */
+.submission-panel > *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.grading-form > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Toast */
+@media (max-width: 768px) {
+    .toast {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+    }
+}

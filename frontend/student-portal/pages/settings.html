@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - File Submission Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/settings.css">
+    <link rel="stylesheet" href="../styles/global-search.css">
+    <link rel="stylesheet" href="../styles/notifications.css">
+    <link rel="stylesheet" href="../styles/transitions.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class='bx bx-file'></i>
+                <span>FilePortal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class='bx bx-home'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="upload.html" class="nav-item">
+                <i class='bx bx-upload'></i>
+                <span>Upload Files</span>
+            </a>
+            <a href="submissions.html" class="nav-item">
+                <i class='bx bx-folder'></i>
+                <span>My Submissions</span>
+            </a>
+            <a href="feedback.html" class="nav-item">
+                <i class='bx bx-message-square-detail'></i>
+                <span>Feedback & Grades</span>
+            </a>
+            <a href="collaboration.html" class="nav-item">
+                <i class='bx bx-group'></i>
+                <span>Collaboration</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <i class='bx bx-calendar'></i>
+                <span>Calendar</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class='bx bx-bar-chart'></i>
+                <span>Analytics</span>
+            </a>
+            <a href="chat.html" class="nav-item">
+                <i class='bx bx-message-dots'></i>
+                <span>Messages</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="nav-item active">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+            <a href="../../shared/pages/login.html" class="nav-item">
+                <i class='bx bx-log-out'></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <h1>Settings</h1>
+            </div>
+            
+            <!-- Global Search -->
+            <div class="global-search-container">
+                <div class="global-search-wrapper">
+                    <i class='bx bx-search search-icon'></i>
+                    <input type="text" id="globalSearchInput" class="global-search-input" placeholder="Search submissions, feedback, groups..." autocomplete="off">
+                    <span class="search-shortcut">Ctrl+K</span>
+                </div>
+                <div id="globalSearchResults" class="global-search-results"></div>
+            </div>
+            
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://ui-avatars.com/api/?name=Student+User&background=667eea&color=fff" alt="Profile">
+                    <span>Student User</span>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Settings Container -->
+        <div class="settings-container">
+            <!-- Alert Container -->
+            <div id="alertContainer"></div>
+
+            <!-- Settings Navigation -->
+            <nav class="settings-nav">
+                <button class="settings-nav-item active" data-tab="profile">
+                    <i class='bx bx-user'></i>
+                    <span>Profile</span>
+                </button>
+                <button class="settings-nav-item" data-tab="preferences">
+                    <i class='bx bx-palette'></i>
+                    <span>Preferences</span>
+                </button>
+                <button class="settings-nav-item" data-tab="notifications">
+                    <i class='bx bx-bell'></i>
+                    <span>Notifications</span>
+                </button>
+                <button class="settings-nav-item" data-tab="privacy">
+                    <i class='bx bx-lock'></i>
+                    <span>Privacy</span>
+                </button>
+                <button class="settings-nav-item" data-tab="security">
+                    <i class='bx bx-shield'></i>
+                    <span>Security</span>
+                </button>
+            </nav>
+
+            <!-- Profile Settings -->
+            <div id="profile" class="settings-content active">
+                <div class="settings-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar-container">
+                            <img src="https://ui-avatars.com/api/?name=Student+User&background=667eea&color=fff&size=120" alt="Profile" class="profile-avatar">
+                            <button class="change-avatar-btn" onclick="changeAvatar()">
+                                <i class='bx bx-camera'></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Student User</h3>
+                            <p>student@example.com</p>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">24</span>
+                                    <span class="stat-label">Submissions</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">85%</span>
+                                    <span class="stat-label">Avg Grade</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">92%</span>
+                                    <span class="stat-label">Completion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Personal Information</h2>
+                    <p>Update your personal details and information</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Student ID</label>
+                            <input type="text" id="studentId" placeholder="Enter your student ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select id="department">
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Business">Business</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Science">Science</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Year</label>
+                            <select id="year">
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Bio</label>
+                            <textarea id="bio" placeholder="Tell us about yourself..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="saveProfile">
+                            <i class='bx bx-save'></i> Save Changes
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class='bx bx-reset'></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences Settings -->
+            <div id="preferences" class="settings-content">
+                <div class="settings-card">
+                    <h2>Preferences</h2>
+                    <p>Customize your experience</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select id="language">
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Timezone</label>
+                            <select id="timezone">
+                                <option value="UTC">UTC</option>
+                                <option value="EST">Eastern Time</option>
+                                <option value="PST">Pacific Time</option>
+                                <option value="CST">Central Time</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date Format</label>
+                            <select id="dateFormat">
+                                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="savePreferences">
+                            <i class='bx bx-save'></i> Save Preferences
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Settings -->
+            <div id="notifications" class="settings-content">
+                <div class="settings-card">
+                    <h2>Notification Preferences</h2>
+                    <p>Manage how you receive notifications</p>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Email Notifications</h4>
+                            <p>Receive notifications via email</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="emailNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Push Notifications</h4>
+                            <p>Receive push notifications in browser</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="pushNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Submission Updates</h4>
+                            <p>Get notified when your submissions are reviewed</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="submissionNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Deadline Reminders</h4>
+                            <p>Receive reminders for upcoming deadlines</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="deadlineNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Grade Notifications</h4>
+                            <p>Get notified when grades are posted</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="gradeNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Message Notifications</h4>
+                            <p>Receive notifications for new messages</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="messageNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div id="privacy" class="settings-content">
+                <div class="settings-card">
+                    <h2>Privacy Settings</h2>
+                    <p>Control your privacy and data sharing</p>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Profile Visibility</h4>
+                            <p>Make your profile visible to other students</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="profileVisibility" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Show Email</h4>
+                            <p>Display your email on your profile</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showEmail">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Show Phone Number</h4>
+                            <p>Display your phone number on your profile</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showPhone">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <h4>Activity Status</h4>
+                            <p>Show when you're online</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="activityStatus" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div id="security" class="settings-content">
+                <div class="settings-card">
+                    <h2>Change Password</h2>
+                    <p>Update your password regularly for security</p>
+
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Current Password</label>
+                            <input type="password" id="currentPassword" placeholder="Enter current password">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="changePassword">
+                            <i class='bx bx-lock'></i> Change Password
+                        </button>
+                    </div>
+                </div>
+
+                <div class="danger-zone">
+                    <h3><i class='bx bx-error'></i> Danger Zone</h3>
+                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="btn btn-danger" id="deleteAccount">
+                        <i class='bx bx-trash'></i> Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../shared/utils/page-transition.js"></script>
+    <script src="../utils/notifications.js"></script>
+    <script src="../utils/dashboard.js"></script>
+    <script src="../utils/settings.js"></script>
+    <script src="../utils/global-search.js"></script>
+    <script src="../utils/search-filters.js"></script>
+    <script src="../utils/lazy-loader.js" defer></script>
+    <script src="../utils/performance-monitor.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.error('❌ SW registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
